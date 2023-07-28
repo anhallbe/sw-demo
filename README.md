@@ -2,6 +2,8 @@
 
 Demonstration of offline web app using a Service Worker, ids-enterprise-wc and Vite.
 
+⚠️ NOTE: Only on Github because Pages deployment. This code is not maintained nor useful for anything other than experimentation / demonstration.
+
 ## Install
 
 ```bash
