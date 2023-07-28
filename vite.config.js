@@ -4,6 +4,9 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [serviceWorkerPlugin()],
+  build: {
+    outDir: "public",
+  },
 });
 
 /**
@@ -17,7 +20,7 @@ function serviceWorkerPlugin() {
       await esbuild.build({
         entryPoints: ["src/service-worker.ts"],
         bundle: true,
-        outfile: "dist/service-worker.js",
+        outfile: "public/service-worker.js",
         format: "esm",
         platform: "browser",
         target: "es2020",
