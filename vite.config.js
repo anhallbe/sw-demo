@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     outDir: "public",
   },
+  base: "/sw-demo/",
 });
 
 /**
