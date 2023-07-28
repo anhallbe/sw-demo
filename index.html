@@ -1,13 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Service Worker Demo</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/ids-enterprise-wc/themes/ids-theme-default-light.css"
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <ids-container hidden role="main">
+      <ids-theme-switcher self-managed="true" hidden></ids-theme-switcher>
+
+      <ids-text type="h1" font-size="32">Service Worker Demo</ids-text>
+      <ids-text type="p">
+        This app is using a Service Worker and should be available offline.
+      </ids-text>
+      <ids-text type="p">
+        It is built using
+        <ids-hyperlink
+          href="https://github.com/infor-design/enterprise-wc"
+          target="_blank"
+        >
+          ids-enterprise-wc
+        </ids-hyperlink>
+        and
+        <ids-hyperlink href="https://vitejs.dev" target="_blank">
+          Vite </ids-hyperlink
+        >.
+      </ids-text>
+      <ids-text type="p" id="network-status"></ids-text>
+      <ids-button appearance="primary">Cool!</ids-button>
+    </ids-container>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,24 +1,45 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "ids-enterprise-wc/components/ids-button/ids-button";
+import "ids-enterprise-wc/components/ids-container/ids-container";
+import "ids-enterprise-wc/components/ids-hyperlink/ids-hyperlink";
+import "ids-enterprise-wc/components/ids-text/ids-text";
+import "ids-enterprise-wc/components/ids-theme-switcher/ids-theme-switcher";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+import "./style.css";
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+setupNetworkStatusCheck(document.getElementById("network-status")!);
+if (import.meta.env.PROD) {
+  console.log("Registering service worker...");
+  setupServiceWorker();
+}
+
+function setupNetworkStatusCheck(element: HTMLElement) {
+  const onlineText = "You are online 🟢";
+  const offlineText = "You are offline 🔴";
+
+  if (navigator.onLine) {
+    element.textContent = onlineText;
+  } else {
+    element.textContent = offlineText;
+  }
+
+  window.addEventListener("online", () => {
+    element.textContent = onlineText;
+  });
+
+  window.addEventListener("offline", () => {
+    element.textContent = offlineText;
+  });
+}
+
+async function setupServiceWorker() {
+  if ("serviceWorker" in navigator) {
+    const registration = await navigator.serviceWorker.register(
+      "service-worker.js",
+      {
+        scope: "./",
+        type: "module",
+      }
+    );
+    console.log("Service worker registered:", registration);
+  }
+}
