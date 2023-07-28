@@ -17,7 +17,7 @@ function serviceWorkerPlugin() {
   return {
     name: "service-worker",
     async writeBundle(_options, o2) {
-      const cachableAssets = ["./", ...Object.keys(o2)];
+      const cachableAssets = ["./", ...Object.keys(o2).map((x) => `./${x}`)];
       await esbuild.build({
         entryPoints: ["src/service-worker.ts"],
         bundle: true,
