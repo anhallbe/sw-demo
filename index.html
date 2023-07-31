@@ -36,7 +36,17 @@
         >.
       </ids-text>
       <ids-text type="p" id="network-status"></ids-text>
-      <ids-button appearance="primary">Cool!</ids-button>
+      <ids-button id="modal-trigger" appearance="primary">
+        Open Modal
+      </ids-button>
+
+      <ids-modal id="modal">
+        <ids-text type="h2" font-size="28">Dialog Title</ids-text>
+        <ids-text type="p"> Modal dialog works! </ids-text>
+        <ids-modal-button id="button-ok" appearance="primary">
+          <ids-text>OK</ids-text>
+        </ids-modal-button>
+      </ids-modal>
     </ids-container>
 
     <script type="module" src="/src/main.ts"></script>
