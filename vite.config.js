@@ -6,6 +6,12 @@ export default defineConfig({
   plugins: [serviceWorkerPlugin()],
   build: {
     outDir: "public",
+    rollupOptions: {
+      input: {
+        main: "index.html",
+        404: "404.html",
+      },
+    },
   },
   base: "/sw-demo/",
 });
